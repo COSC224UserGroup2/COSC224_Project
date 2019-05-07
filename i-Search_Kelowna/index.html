@@ -9,75 +9,125 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="styleOne.css"> 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
-        <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+        <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32"/>
+        <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16"/>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     </head>
     <body>       
         <header>
-            <h1><a href="https://isearchkelowna.ca/"><img src = "iSearchKelowna Logo.PNG" alt = "logo"></a></h1>
-            
+            <h1><a href="https://isearchkelowna.ca/"><img src = "iSearchKelowna Logo.PNG" alt = "logo"></a></h1>            
         </header>       
         <aside>
             <h4>Common Search Subjects</h4>
             <div id = "broadSearch">          
-                <button class ='btn' onClick="output('1')">Search All</button>
-                <button class ='btn' onClick="output('2')">Building Type</button>
-                <button class ='btn' onClick="output('3')">Substance Tolerance</button>
-                <button class ='btn' onClick="output('4')">Target Demographic</button>
-                <button class ='btn' onClick="output('5')">Services Provided</button>
-                <button class ='btn' onClick="output('6')">Custom Search</button>
+                <button class ='btn' onClick="showMore(1);output('1');">Search All</button>
+                <button class ='btn' onClick="showMore(2);">Building Type</button>
+                <button class ='btn' onClick="showMore(3);">Restrictions and Tolerances</button>
+                <button class ='btn' onClick="showMore(4);">Target Demographic</button>
+                <button class ='btn' onClick="showMore(5);">General Search</button>
+                <button class ='btn' onClick="showMore(6);">Custom Search</button>
             </div>           
         </aside>
-        <div id ="showMore">
-            <label for="genderServed">Gender(s) Served:</label>
-            <select id = "genderServed">
-                <option>No preference</option>
-                <option>Male</option>
-                <option>Female</option>
-                <option>Transgender</option>
-                <option>All genders accommodated</option>                    
-            </select><br>
-            Is alcohol permitted?               
-            <input type = "radio" name = "alcUse" value = "Yes" id = "atrue">Yes
-            <input type = "radio" name = "alcUse" value = "No" id = "afalse">No<br>
-            Are drugs permitted?
-            <input type = "radio" name = "drugUse" value = "Yes" id = "dUtrue">Yes
-            <input type = "radio" name = "drugUse" value = "No" id = "dUfalse">No<br>
-            Are the disabled accommodated?
-            <input type = "radio" name = "accDisabled" value = "Yes" id = "aDtrue">Yes
-            <input type = "radio" name = "accDisabled" value = "No" id = "aDfalse">No<br>
-            Are pets permitted?
-            <input type = "radio" name = "pets" value = "Yes" id = "ptrue">Yes
-            <input type = "radio" name = "pets" value = "No" id = "pfalse">No<br>                    
-        </div>
-        <div id = "options">
-            <h4> Refine Search </h4>
-            <label for="Keywords">Keywords:</label>
-            <input type = "text" id = "Keywords"><br>
-            <label for = "age"> Age Demographic:</label>
-            <input type = "number" id = "age" class = "num" placeholder="Age"><br>
-            <label for="rent">Desired Monthly Rent:</label>
-            <input type = "number" id = "rent" placeholder = "$" class = "num"><br>                
-            <label for="buildingType">Building Type:</label>
-            <select id = "buildingType">
-                <option>No preference</option>
-                <option>Emergency </option>
-                <option>Supportive</option>
-                <option>Transitional</option>
-                <option>Low income rental</option>
-            </select><br><br>
+        <div class ='options' id = 'searchAll'>
 
-            <button class ='btn' onclick="showMore()">Show more options</button>
-            <button class ='btn' onClick ="output('7')">Refine/Search</button>
+            <button class ='btn' onClick ="output('2');">Refine/Search</button>
         </div>
-        <div id ="message">
-            <p></p>
+        <div class ='options' id = "buildingType">
+            <button class ='btn' onClick ="output('2');">Refine/Search</button>
         </div>
+        <div class = 'options' id = 'tolerances'>
+            Is smoking permitted?
+            <input type ="radio" name ="smoking" value ="true" id ="sTrue">Yes
+            <input type ="radio" name ="smoking" value ="false" id ="sFalse">No<br>
+            Is alcohol permitted?               
+            <input type = "radio" name = "alcUse" value = "true" id = "aTrue">Yes
+            <input type = "radio" name = "alcUse" value = "false" id = "aFalse">No<br>
+            Are drugs permitted?
+            <input type = "radio" name = "drugUse" value = "true" id = "dTrue">Yes
+            <input type = "radio" name = "drugUse" value = "false" id = "dFalse">No<br>
+            Are the disabled accommodated?
+            <input type = "radio" name = "accDisabled" value = "true" id = "disTrue">Yes
+            <input type = "radio" name = "accDisabled" value = "false" id = "disFalse">No<br>
+            Are pets permitted?
+            <input type = "radio" name = "pets" value = "true" id = "pTrue">Yes
+            <input type = "radio" name = "pets" value = "false" id = "pFalse">No<br>
+            Is there a max stay duration?
+            <input type = "radio" name = "stayDur" value = "true" id = "maxStayTrue">Yes
+            <input type = "radio" name = "stayDur" value = "false" id = "maxStayFalse">No<br>
+            Is there a clean time requirement?
+            <input type = "radio" name = "clean" value = "true" id = "cleanTrue">Yes
+            <input type = "radio" name = "clean" value = "false" id = "cleanFalse">No<br>
+            Is a treatment detox required before admittance?            
+            <input type = "radio" name = "detox" value = "true" id = "detTrue">Yes
+            <input type = "radio" name = "detox" value = "false" id = "detFalse">No<br>
+            <button class ='btn' onClick ="output('3');">Refine/Search</button>
+        </div>
+
+        <div class = 'options' id = "demographic">
+            Family
+            <input type ='checkbox' value = "family" id ='family'>
+            Couple
+            <input type ='checkbox' value = "couple" id ='couple'>
+            Individual
+            <input type ='checkbox' value = "individual" id ='indiv'>
+            Male
+            <input type ='checkbox' value = "male" id ='male'>
+            Female
+            <input type ='checkbox' value = "female" id ='female'>
+            Transgender
+            <input type ='checkbox' value = "transgender" id ='trans'>
+            Age
+            <select id = "age">
+                <option value="16 -18">16 - 18</option>
+                <option value="19+">19+</option>
+                <option value="55+">55+</option>
+                <option value="other">No preference</option>
+            </select><br>
+            <button class ='btn' onClick ="output('4');">Refine/Search</button>
+        </div>
+        <div class ='options' id = 'generalSearch'>
+            Has waitlist
+            <input type = "checkbox" value = "true" id = "waitlist"><br>
+            Has max duration of stay
+            <input type = "checkbox" value = "true" id = "duration"><br>
+            Furnished
+            <input type = "checkbox" value = "true" id = "furnished"><br>
+             Under RTA
+            <input type = "checkbox" value = "true" id = "RTA"><br>
+            Accommodates People with Disabilities
+            <input type = "checkbox" value = "true" id = "disabilities"><br>
+            The Units are RGI
+            <input type = "checkbox" value = "true" id = "RGI"><br>
+            Qualifies For Rental Assistance
+            <input type = "checkbox" value = "true" id = "Rassistance"><br>
+            Clean Time Requirement
+            <input type = "checkbox" value = "true" id = "Crequirement"><br>
+            Treatment/Detox Required First
+            <input type = "checkbox" value = "true" id = "treatment"><br>
+            Has min income level
+            <input type = "checkbox" value = "true" id = "income"><br>
+            Has max income level
+            <input type = "checkbox" value = "true" id = "income2"><br>
+            Building is Pet Friendly
+            <input type = "checkbox" value = "true" id = "petfriendly"><br>
+            Smoking Permitted in Building
+            <input type = "checkbox" value = "true" id = "smokingInBuilding"><br>
+            Smoking Permitted in Units
+            <input type = "checkbox" value = "true" id = "unitsmoking"><br>
+            Require Professional Support
+            <input type = "checkbox" value = "true" id = "eligibility"><br>
+            <button class ='btn' onClick ="output('5');">Refine/Search</button>
+        </div>
+        
+        <div class ='options' id = 'custom'>
+            <button class ='btn' onClick ="output('6');">Refine/Search</button>
+        </div>   
+        
         <main>
             <div id='out'>
 
             </div>
+            
             <input type="button" class ="printbtn" onclick="printDiv('out')" value="Print"/>
             <a class = "a" href="http://www.sharethis.com/share?url=http://localhost/Project_Repo/COSC224_Project/i-Search_Kelowna/index.html&title=iSearch Kelowna&summary=This website helps service providers in the Okanagan Area to find shelters for helpless people.&img src=img.jpg&pageInfo=%7B%22hostname%22%3A%22[INSERT DOMAIN NAME]%22%2C%22publisher%22%3A%22[INSERT PUBLISHERID]%22%7D">Share this page</a>            
         </main>
@@ -87,75 +137,126 @@
         </footer>
 
         <script>
-            function showMore() {
-                var x = document.getElementById("showMore");
-                var btn = document.getElementById("showBtn");
-                if (x.style.display === "none") {
+            function showMore(id) {
+                var elems = document.getElementsByClassName('options');
+                //clear previous options
+                for (var i = 0; i < elems.length; ++i) {
+                    elems[i].style.display = "none";
+                }
+                var x;
+                if (id === 1) {
+                    document.getElementById("out").innerHTML = ""
+                    x = document.getElementById("searchAll");
+                } else if (id === 2) {
+                    document.getElementById("out").innerHTML = ""
+                    x = document.getElementById("buildingType");
+                } else if (id === 3) {
+                    document.getElementById("out").innerHTML = ""
+                    x = document.getElementById("tolerances");
+                } else if (id === 4) {
+                    document.getElementById("out").innerHTML = ""
+                    x = document.getElementById("demographic");
+                } else if (id === 5) {
+                    document.getElementById("out").innerHTML = ""
+                    x = document.getElementById("generalSearch");
+                } else if (id === 6) {
+                    document.getElementById("out").innerHTML = ""
+                    x = document.getElementById("custom");
+                }
+                if (x.style.display !== 'block') {
                     x.style.display = "block";
-                } else {
-                    x.style.display = "none";
                 }
             }
         </script>       
-
         <script type="text/javascript">
             function output(id) {
-               //Default values for radio buttons.
-               alcohol = '';
-               drugs = '';
-               disabledAcc = '';
-               pets = '';
-               //Strings not booleans because of how the DB is set up.
-               if(document.getElementById("atrue").checked){
-                   alcohol = "true";
-               }
-               else if(document.getElementById("afalse").checked){
-                   alcohol = "false";
-               }
-               if(document.getElementById("dUtrue").checked){
-                   drugs = "true";
-               }
-               else if(document.getElementById("dUfalse").checked){
-                   drugs = "false";
-               }
-               if(document.getElementById("aDtrue").checked){
-                   disabledAcc = "true";
-               }
-               else if(document.getElementById("aDfalse").checked){
-                   disabledAcc = "false";
-               }
-               if(document.getElementById("ptrue").checked){
-                   pets = "true";
-               }
-               else if(document.getElementById("pfalse").checked){
-                   pets = "false";
-               }
-               keywords = document.getElementById("Keywords").value;
-               age = document.getElementById("age").value; 
-               rent = document.getElementById("rent").value;
-               buildingType = document.getElementById("buildingType").value;
-               genderServed = document.getElementById("genderServed").value;
-               $('#out').load("output.php", {id, keywords, age, rent, buildingType, genderServed, alcohol, drugs, disabledAcc, pets});
-            }
-           /*function update(){
-                var dataString = "eric";
-                $.ajax({
-                type: "POST",
-                url: "output.php",
-                    data: dataString,
-                    cache: false,
-                    success: function(dataString) {
-                    $("#message").html(dataString);
-                    $("p").addClass("alert alert-success");
-                },
-                error: function(err) {
-                alert(err);
+                //Default values for radio buttons.
+                //Strings not booleans because of how the DB is set up.
+                //
+                var smoking = "", alcohol = "", drugs = "", disabled = "", pets = "", maxStay = "", clean = "", detox = "",
+                        family = "", couple = "", individual = "", male = "", female = "", transgender = "", age = "";
+                if (id === '1') {
+                    document.getElementById("out").innerHTML = "";
+                } else if (id === '2') {
+                    document.getElementById("out").innerHTML = "";
+                } else if (id === '3') {
+                    document.getElementById("out").innerHTML = "";
+                } else if (id === '4') {
+                    document.getElementById("out").innerHTML = "";
+                    if (document.getElementById('family').checked) {
+                        family = "true";
+                    }
+                    if (document.getElementById('couple').checked) {
+                        couple = "true";
+                    }
+                    if (document.getElementById('indiv').checked) {
+                        individual = "true";
+                    }
+                    if (document.getElementById('male').checked) {
+                        male = "true";
+                    }
+                    if (document.getElementById('female').checked) {
+                        female = "true";
+                    }
+                    if (document.getElementById('trans').checked) {
+                        transgender = "true";
+                    }
+                    age = document.getElementById('age').value;
+                    
+                } else if (id === '5') {
+                    document.getElementById("out").innerHTML = "";
+                     if (document.getElementById('waitlist').checked) {
+                        waitlist = "true";
+                    }
+                    if (document.getElementById('furnished').checked) {
+                        furnished = "true";
+                    }
+                    if (document.getElementById('RTA').checked) {
+                        RTA = "true";
+                    }
+                    if (document.getElementById('disabilities').checked) {
+                        disabilities = "true";
+                    }
+                    if (document.getElementById('RGI').checked) {
+                        RGI = "true";
+                    }
+                    if (document.getElementById('Rassistance').checked) {
+                        Rassistance = "true";
+                    }
+                    if (document.getElementById('duration').checked) {
+                        duration = "true";
+                    }
+                    if (document.getElementById('treatment').checked) {
+                    treatment = "true";
+                    }
+                    if (document.getElementById('income').checked) {
+                        income = "true";
+                    }
+                    if (document.getElementById('income2').checked) {
+                        income2 = "true";
+                    }
+                     if (document.getElementById('petfriendly').checked) {
+                        petfriendly = "true";
+                    }
+                     if (document.getElementById('smokingInBuilding').checked) {
+                        smokingbuilding = "true";
+                    }
+                     if (document.getElementById('unitsmoking').checked) {
+                        unitsmoking = "true";
+                    }
+                     if (document.getElementById('eligibility').checked) {
+                        eligibility = "true";
+                    }
+                } 
+                
+                else if (id === '6') {
+                    document.getElementById("out").innerHTML = "";
                 }
-                });
-                return false;
-            }*/
-        </script>
 
+                $('#out').load("output.php", {id, smoking, alcohol, drugs, disabled, pets, maxStay, clean, detox,
+                    family, couple, individual, male, female, transgender, age});
+            }
+        </script>
         <script type="text/javascript">
             function printDiv(divName) {
                 var printContents = document.getElementById(divName).innerHTML;

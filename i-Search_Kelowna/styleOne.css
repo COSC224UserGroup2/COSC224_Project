@@ -35,8 +35,9 @@ aside{
     border-right: 0.1em solid white; 
     */
 }
-#options{
+.options{
     margin-left:20em;
+    display: none;
 }
 #options label{
     margin-right: 0%;
@@ -147,6 +148,21 @@ main img{
 }
 #firsta{
     cursor: pointer;
+}
+#generalSearch{
+    column-count: 3;
+    padding-left: 2%;
+    width: 80%;
+}
+#demographic{
+    padding-left: 3%;
+}
+#tolerances{
+    padding-left: 3%;
+    column-count: 2;
+}
+#buildingType{
+    padding-left: 3%;
 }
 #qs{
     height: 10%;
